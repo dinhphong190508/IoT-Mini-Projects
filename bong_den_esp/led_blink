@@ -1,0 +1,11 @@
+from machine import Pin, PWM
+import time
+led_pwm=PWM(Pin(4),freq=1000)
+print("bắt đầu hiệu ứng nháy sáng")
+while True:
+    for duty_cycle in range(0,1024,5):
+        led_pwm.duty(duty_cycle)
+        time.sleep(0.01)
+    for duty_cycle in range(1023,-1,-5): #1024 vượt quá giá trị tối đa 1023 của hàm duty theo thang 10-bit
+        led_pwm.duty(duty_cycle)
+        time.sleep(0.01)
